@@ -87,6 +87,9 @@ defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode2 -bool true
 defaults write NSGlobalDomain PMPrintingExpandedStateForPrint -bool true
 defaults write NSGlobalDomain PMPrintingExpandedStateForPrint2 -bool true
 
+# Restore the the 'Save As' menu item (Equivalent to adding a Keyboard shortcut in the System Preferences.app )
+defaults write -g NSUserKeyEquivalents -dict-add 'Save As...' '@$S'
+
 # Save to disk (not to iCloud) by default
 defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
 
