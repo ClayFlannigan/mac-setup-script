@@ -5,7 +5,6 @@ brews=(
   git
   imagemagick
   mas
-  "opencv --with-contrib --with-python3"
   python
   python3
   youtube-dl
@@ -19,6 +18,7 @@ pips=(
   pip
   numpy
   matplotlib
+  opencv-contrib-python
 )
 
 ######################################## End of app list ########################################
@@ -69,11 +69,11 @@ if [[ -z "${CI}" ]]; then
 fi
 
 if test ! "$(command -v brew)"; then
-  prompt "Install Homebrew"
+  echo "*** Install Homebrew ***"
   ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 else
   if [[ -z "${CI}" ]]; then
-    prompt "Update Homebrew"
+    echo "*** Update Homebrew ***"
     brew update
     brew upgrade
     brew doctor
@@ -81,31 +81,30 @@ else
 fi
 export HOMEBREW_NO_AUTO_UPDATE=1
 
-prompt "Install packages"
+echo "*** Install packages ***"
 install 'brew_install_or_upgrade' "${brews[@]}"
 
-prompt "Install software"
+echo "*** Install software ***"
 brew tap homebrew/cask-versions
 install 'brew cask install' "${casks[@]}"
 
-prompt "Install secondary packages"
+echo "*** Install secondary packages ***"
 install 'pip3 install --upgrade' "${pips[@]}"
 
-prompt "Update packages"
+echo "*** Update packages ***"
 pip3 install --upgrade pip setuptools wheel
 if [[ -z "${CI}" ]]; then
   m update install all
 fi
 
 if [[ -z "${CI}" ]]; then
-  prompt "Install software from App Store"
+  echo "*** Install software from App Store ***"
   mas list
 fi
 
-Prompt "Alias Python"
-alias python=/usr/local/bin/python3
+echo "alias python=/usr/local/bin/python3.7" >> ~/.zshrc
 
-prompt "Cleanup"
+echo "*** Cleanup ***"
 brew cleanup
 
 echo "Done!"
