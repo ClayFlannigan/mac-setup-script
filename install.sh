@@ -36,6 +36,12 @@ apps=(
   457622435 	#Yoink
 )
 
+git_configs=(
+  "user.name clayflannigan"
+  "user.email clay.flannigan@gmail.com"
+#  "user.signingkey ${gpg_key}"
+)
+
 ######################################## End of app list ########################################
 set +e
 set -x
@@ -118,6 +124,12 @@ if [[ -z "${CI}" ]]; then
   echo "*** Install software from App Store ***"
   install 'mas install' "${apps[@]}"
 fi
+
+Echo "*** Set git defaults ***"
+for config in "${git_configs[@]}"
+do
+  git config --global ${config}
+done
 
 echo "alias python=/usr/local/bin/python3.7" >> ~/.zshrc
 
