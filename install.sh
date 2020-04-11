@@ -1,39 +1,42 @@
 #!/usr/bin/env bash
 
 brews=(
-  awscli
-  git
-  imagemagick
-  mas
-  python
-  python3
-  youtube-dl
+	awscli
+	git
+	goofys
+	imagemagick
+	mas
+	python
+	python3
+	youtube-dl
 )
 
 casks=(
-  amazon-chime
-  amazon-workdocs
-  elmedia-player
-  google-chrome
-  pycharm
-  sublime-text
+	amazon-chime
+	amazon-workdocs
+	elmedia-player
+	google-chrome
+	osxfuse
+	pycharm
+	sublime-text
 )
 
 pips=(
-  pip
-  numpy
-  matplotlib
-  opencv-contrib-python
+	pip
+	numpy
+	matplotlib
+	moviepy
+	opencv-contrib-python
 )
 
 apps=(
-  417375580	#BetterSnapTool
-  1209754386	#eDrawings
-  1436953057	#Ghostery Lite
-  1289583905 	#Pixelmator Pro
-  1003160018	#Quip
-  930093508	#Shapes
-  457622435 	#Yoink
+	417375580	#BetterSnapTool
+	1209754386	#eDrawings
+	1436953057	#Ghostery Lite
+	1289583905 	#Pixelmator Pro
+	1003160018	#Quip
+	930093508	#Shapes
+	457622435 	#Yoink
 )
 
 git_configs=(
@@ -58,11 +61,11 @@ function install {
   for pkg in "$@";
   do
     exec="$cmd $pkg"
-    #prompt "Execute: $exec"
+    echo "Execute: $exec"
     if ${exec} ; then
       echo "Installed $pkg"
     else
-      echo "Failed to execute: $exec"
+      echo -e "\033[1;31m ERROR: Failed to execute: $exec \033[0m"
       if [[ ! -z "${CI}" ]]; then
         exit 1
       fi
@@ -91,6 +94,9 @@ if [[ -z "${CI}" ]]; then
   while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 fi
 
+echo "*** Install xcode comannd line tools ***"
+xcode-select --install
+
 if test ! "$(command -v brew)"; then
   echo "*** Install Homebrew ***"
   ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
@@ -104,10 +110,10 @@ else
 fi
 export HOMEBREW_NO_AUTO_UPDATE=1
 
-echo "*** Install packages ***"
+echo "*** Install homebrew packages ***"
 install 'brew_install_or_upgrade' "${brews[@]}"
 
-echo "*** Install software ***"
+echo "*** Install cask software ***"
 brew tap homebrew/cask-versions
 install 'brew cask install' "${casks[@]}"
 
@@ -121,7 +127,7 @@ if [[ -z "${CI}" ]]; then
 fi
 
 if [[ -z "${CI}" ]]; then
-  echo "*** Install software from App Store ***"
+  echo "*** Install software from Mac App Store ***"
   install 'mas install' "${apps[@]}"
 fi
 
