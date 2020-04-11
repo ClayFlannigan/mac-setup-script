@@ -11,7 +11,12 @@ brews=(
 )
 
 casks=(
-  istat-menus
+  amazon-chime
+  amazon-workdocs
+  elmedia-player
+  google-chrome
+  pycharm
+  sublime-text
 )
 
 pips=(
@@ -19,6 +24,16 @@ pips=(
   numpy
   matplotlib
   opencv-contrib-python
+)
+
+apps=(
+  417375580	#BetterSnapTool
+  1209754386	#eDrawings
+  1436953057	#Ghostery Lite
+  1289583905 	#Pixelmator Pro
+  1003160018	#Quip
+  930093508	#Shapes
+  457622435 	#Yoink
 )
 
 ######################################## End of app list ########################################
@@ -62,6 +77,8 @@ function brew_install_or_upgrade {
   fi
 }
 
+
+
 if [[ -z "${CI}" ]]; then
   sudo -v # Ask for the administrator password upfront
   # Keep-alive: update existing `sudo` time stamp until script has finished
@@ -99,7 +116,7 @@ fi
 
 if [[ -z "${CI}" ]]; then
   echo "*** Install software from App Store ***"
-  mas list
+  install 'mas install' "${apps[@]}"
 fi
 
 echo "alias python=/usr/local/bin/python3.7" >> ~/.zshrc
