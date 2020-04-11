@@ -5,6 +5,7 @@ brews=(
   git
   imagemagick
   mas
+  "opencv --with-contrib --with-python3"
   python
   python3
   youtube-dl
@@ -16,6 +17,8 @@ casks=(
 
 pips=(
   pip
+  numpy
+  matplotlib
 )
 
 ######################################## End of app list ########################################
@@ -80,10 +83,9 @@ export HOMEBREW_NO_AUTO_UPDATE=1
 
 prompt "Install packages"
 install 'brew_install_or_upgrade' "${brews[@]}"
-brew link --overwrite ruby
 
 prompt "Install software"
-brew tap caskroom/versions
+brew tap homebrew/cask-versions
 install 'brew cask install' "${casks[@]}"
 
 prompt "Install secondary packages"
@@ -100,8 +102,10 @@ if [[ -z "${CI}" ]]; then
   mas list
 fi
 
+Prompt "Alias Python"
+alias python=/usr/local/bin/python3
+
 prompt "Cleanup"
 brew cleanup
-brew cask cleanup
 
 echo "Done!"
