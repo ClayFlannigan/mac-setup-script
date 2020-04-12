@@ -42,6 +42,7 @@ apps=(
 git_configs=(
   "user.name clayflannigan"
   "user.email clay.flannigan@gmail.com"
+  "core.excludesfile ~/.gitignore"
 #  "user.signingkey ${gpg_key}"
 )
 
@@ -132,14 +133,23 @@ if [[ -z "${CI}" ]]; then
   install 'mas install' "${apps[@]}"
 fi
 
-Echo "*** Set git defaults ***"
+# Echo "*** Set git defaults ***"
+# echo "*.pyc" >> ~/.gitignore
+# echo ".DS_Store" >> ~/.gitignore
+# echo "Desktop.ini" >> ~/.gitignore
+# echo "._*" >> ~/.gitignore
+# echo "Thumbs.db" >> ~/.gitignore
+# echo ".Spotlight-V100" >> ~/.gitignore
+# echo ".Trashes" >> ~/.gitignore
+# sort ~/.gitignore | uniq -u > ~/.gitignore
 for config in "${git_configs[@]}"
 do
   git config --global ${config}
 done
 
-echo "alias python=/usr/local/bin/python3.7" >> ~/.zshrc
-echo 'export PATH="/usr/local/sbin:$PATH"' >> ~/.zshrc
+# echo "alias python=/usr/local/bin/python3.7" >> ~/.zshrc
+# echo 'export PATH="/usr/local/sbin:$PATH"' >> ~/.zshrc
+# sort ~/.zshrc | uniq -u > ~/.zshrc
 
 echo "*** Cleanup ***"
 brew cleanup
