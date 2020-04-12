@@ -17,7 +17,7 @@ casks=(
 	elmedia-player
 	google-chrome
 	osxfuse
-	pycharm
+	pycharm-ce
 	sublime-text
 )
 
