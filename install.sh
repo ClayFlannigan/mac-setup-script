@@ -46,6 +46,7 @@ git_configs=(
 )
 
 ######################################## End of app list ########################################
+
 set +e
 set -x
 
@@ -138,6 +139,7 @@ do
 done
 
 echo "alias python=/usr/local/bin/python3.7" >> ~/.zshrc
+echo 'export PATH="/usr/local/sbin:$PATH"' >> ~/.zshrc
 
 echo "*** Cleanup ***"
 brew cleanup
