@@ -133,6 +133,12 @@ if [[ -z "${CI}" ]]; then
   install 'mas install' "${apps[@]}"
 fi
 
+for config in "${git_configs[@]}"
+do
+  git config --global ${config}
+done
+
+# *** Setup ~/.gitignore ***
 # Echo "*** Set git defaults ***"
 # echo "*.pyc" >> ~/.gitignore
 # echo ".DS_Store" >> ~/.gitignore
@@ -141,15 +147,16 @@ fi
 # echo "Thumbs.db" >> ~/.gitignore
 # echo ".Spotlight-V100" >> ~/.gitignore
 # echo ".Trashes" >> ~/.gitignore
-# sort ~/.gitignore | uniq -u > ~/.gitignore
-for config in "${git_configs[@]}"
-do
-  git config --global ${config}
-done
+# sort ~/.gitignore | uniq > ~/.gitignore
 
+# *** Setup ~/.zshrc ***
 # echo "alias python=/usr/local/bin/python3.7" >> ~/.zshrc
 # echo 'export PATH="/usr/local/sbin:$PATH"' >> ~/.zshrc
-# sort ~/.zshrc | uniq -u > ~/.zshrc
+# sort ~/.zshrc | uniq > ~/.zshrc
+
+# *** Copy ~/.aws/credentials ***
+# echo aws config
+
 
 echo "*** Cleanup ***"
 brew cleanup
