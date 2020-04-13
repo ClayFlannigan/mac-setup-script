@@ -2,7 +2,6 @@
 
 brews=(
   awscli
-  drawio
   ffmpeg
   git
   goofys
@@ -17,6 +16,7 @@ brews=(
 casks=(
 	amazon-chime
 	amazon-workdocs
+  drawio
 	elmedia-player
 	google-chrome
 	osxfuse
