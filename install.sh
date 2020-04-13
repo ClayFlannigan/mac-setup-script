@@ -1,14 +1,17 @@
 #!/usr/bin/env bash
 
 brews=(
-	awscli
-	git
-	goofys
-	imagemagick
-	mas
-	python
-	python3
-	youtube-dl
+  awscli
+  drawio
+  ffmpeg
+  git
+  goofys
+  imagemagick
+  mas
+  python
+  python3
+  wget
+  youtube-dl
 )
 
 casks=(
@@ -30,13 +33,13 @@ pips=(
 )
 
 apps=(
-	417375580	#BetterSnapTool
-	1209754386	#eDrawings
-	1436953057	#Ghostery Lite
-	1289583905 	#Pixelmator Pro
-	1003160018	#Quip
-	930093508	#Shapes
-	457622435 	#Yoink
+	417375580  #BetterSnapTool
+	1209754386 #eDrawings
+	1436953057 #Ghostery Lite
+	1289583905 #Pixelmator Pro
+	1003160018 #Quip
+	930093508  #Shapes
+	457622435  #Yoink
 )
 
 git_configs=(
@@ -112,12 +115,12 @@ else
 fi
 export HOMEBREW_NO_AUTO_UPDATE=1
 
-echo "*** Install homebrew packages ***"
-install 'brew_install_or_upgrade' "${brews[@]}"
-
 echo "*** Install cask software ***"
 brew tap homebrew/cask-versions
 install 'brew cask install' "${casks[@]}"
+
+echo "*** Install homebrew packages ***"
+install 'brew_install_or_upgrade' "${brews[@]}"
 
 echo "*** Install secondary packages ***"
 install 'pip3 install --upgrade' "${pips[@]}"
@@ -137,26 +140,6 @@ for config in "${git_configs[@]}"
 do
   git config --global ${config}
 done
-
-# *** Setup ~/.gitignore ***
-# Echo "*** Set git defaults ***"
-# echo "*.pyc" >> ~/.gitignore
-# echo ".DS_Store" >> ~/.gitignore
-# echo "Desktop.ini" >> ~/.gitignore
-# echo "._*" >> ~/.gitignore
-# echo "Thumbs.db" >> ~/.gitignore
-# echo ".Spotlight-V100" >> ~/.gitignore
-# echo ".Trashes" >> ~/.gitignore
-# sort ~/.gitignore | uniq > ~/.gitignore
-
-# *** Setup ~/.zshrc ***
-# echo "alias python=/usr/local/bin/python3.7" >> ~/.zshrc
-# echo 'export PATH="/usr/local/sbin:$PATH"' >> ~/.zshrc
-# sort ~/.zshrc | uniq > ~/.zshrc
-
-# *** Copy ~/.aws/credentials ***
-# echo aws config
-
 
 echo "*** Cleanup ***"
 brew cleanup
