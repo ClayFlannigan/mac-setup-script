@@ -59,6 +59,9 @@ launchctl unload -w /System/Library/LaunchAgents/com.apple.Siri.plist 2> /dev/nu
 # Clock
 defaults write com.apple.menuextra.clock "DateFormat" 'MMM d hh:mm'
 
+# Battery
+defaults write com.apple.menuextra.battery ShowPercent -bool true
+
 # Set highlight color to green
 #defaults write NSGlobalDomain AppleHighlightColor -string "0.764700 0.976500 0.568600"
 
@@ -595,29 +598,29 @@ defaults write com.apple.mail DisableInlineAttachmentViewing -bool true
 #   MENU_SPOTLIGHT_SUGGESTIONS (send search queries to Apple)
 #   MENU_WEBSEARCH             (send search queries to Apple)
 #   MENU_OTHER
-defaults write com.apple.spotlight orderedItems -array \
-    '{"enabled" = 1;"name" = "APPLICATIONS";}' \
-    '{"enabled" = 1;"name" = "SYSTEM_PREFS";}' \
-    '{"enabled" = 1;"name" = "DIRECTORIES";}' \
-    '{"enabled" = 1;"name" = "PDF";}' \
-    '{"enabled" = 1;"name" = "FONTS";}' \
-    '{"enabled" = 0;"name" = "DOCUMENTS";}' \
-    '{"enabled" = 0;"name" = "MESSAGES";}' \
-    '{"enabled" = 0;"name" = "CONTACT";}' \
-    '{"enabled" = 0;"name" = "EVENT_TODO";}' \
-    '{"enabled" = 0;"name" = "IMAGES";}' \
-    '{"enabled" = 0;"name" = "BOOKMARKS";}' \
-    '{"enabled" = 0;"name" = "MUSIC";}' \
-    '{"enabled" = 0;"name" = "MOVIES";}' \
-    '{"enabled" = 0;"name" = "PRESENTATIONS";}' \
-    '{"enabled" = 0;"name" = "SPREADSHEETS";}' \
-    '{"enabled" = 0;"name" = "SOURCE";}' \
-    '{"enabled" = 0;"name" = "MENU_DEFINITION";}' \
-    '{"enabled" = 0;"name" = "MENU_OTHER";}' \
-    '{"enabled" = 0;"name" = "MENU_CONVERSION";}' \
-    '{"enabled" = 0;"name" = "MENU_EXPRESSION";}' \
-    '{"enabled" = 0;"name" = "MENU_WEBSEARCH";}' \
-    '{"enabled" = 0;"name" = "MENU_SPOTLIGHT_SUGGESTIONS";}'
+# defaults write com.apple.spotlight orderedItems -array \
+#     '{"enabled" = 1;"name" = "APPLICATIONS";}' \
+#     '{"enabled" = 1;"name" = "SYSTEM_PREFS";}' \
+#     '{"enabled" = 1;"name" = "DIRECTORIES";}' \
+#     '{"enabled" = 1;"name" = "PDF";}' \
+#     '{"enabled" = 1;"name" = "FONTS";}' \
+#     '{"enabled" = 0;"name" = "DOCUMENTS";}' \
+#     '{"enabled" = 0;"name" = "MESSAGES";}' \
+#     '{"enabled" = 0;"name" = "CONTACT";}' \
+#     '{"enabled" = 0;"name" = "EVENT_TODO";}' \
+#     '{"enabled" = 0;"name" = "IMAGES";}' \
+#     '{"enabled" = 0;"name" = "BOOKMARKS";}' \
+#     '{"enabled" = 0;"name" = "MUSIC";}' \
+#     '{"enabled" = 0;"name" = "MOVIES";}' \
+#     '{"enabled" = 0;"name" = "PRESENTATIONS";}' \
+#     '{"enabled" = 0;"name" = "SPREADSHEETS";}' \
+#     '{"enabled" = 0;"name" = "SOURCE";}' \
+#     '{"enabled" = 0;"name" = "MENU_DEFINITION";}' \
+#     '{"enabled" = 0;"name" = "MENU_OTHER";}' \
+#     '{"enabled" = 0;"name" = "MENU_CONVERSION";}' \
+#     '{"enabled" = 0;"name" = "MENU_EXPRESSION";}' \
+#     '{"enabled" = 0;"name" = "MENU_WEBSEARCH";}' \
+#     '{"enabled" = 0;"name" = "MENU_SPOTLIGHT_SUGGESTIONS";}'
 # Load new settings before rebuilding the index
 # killall mds > /dev/null 2>&1
 # # Make sure indexing is enabled for the main volume
