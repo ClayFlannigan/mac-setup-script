@@ -16,6 +16,7 @@ brews=(
 casks=(
 	amazon-chime
 	amazon-workdocs
+  caffeine
   drawio
 	elmedia-player
 	google-chrome
