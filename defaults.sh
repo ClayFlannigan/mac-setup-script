@@ -284,7 +284,7 @@ defaults write com.apple.finder NewWindowTargetPath -string "file://${HOME}/Desk
 
 # Show icons for hard drives, servers, and removable media on the desktop
 defaults write com.apple.finder ShowExternalHardDrivesOnDesktop -bool true
-#defaults write com.apple.finder ShowHardDrivesOnDesktop -bool true
+defaults write com.apple.finder ShowHardDrivesOnDesktop -bool false
 defaults write com.apple.finder ShowMountedServersOnDesktop -bool true
 defaults write com.apple.finder ShowRemovableMediaOnDesktop -bool true
 
@@ -356,7 +356,7 @@ defaults write com.apple.finder OpenWindowForNewRemovableDisk -bool true
 
 # Use list view in all Finder windows by default
 # Four-letter codes for the other view modes: `icnv`, `clmv`, `Flwv`
-defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv"
+defaults write com.apple.Finder FXPreferredViewStyle Nlsv
 
 # Disable the warning before emptying the Trash
 # defaults write com.apple.finder WarnOnEmptyTrash -bool false
