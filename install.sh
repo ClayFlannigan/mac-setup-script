@@ -34,14 +34,17 @@ pips=(
 )
 
 apps=(
-	1333542190	#1Password
-	417375580  	#BetterSnapTool
-	1209754386 	#eDrawings
-	1436953057 	#Ghostery Lite
-	1289583905 	#Pixelmator Pro
-	1003160018 	#Quip
-	930093508  	#Shapes
-	457622435  	#Yoink
+	1333542190	# 1Password
+	417375580  	# BetterSnapTool
+	1209754386 	# eDrawings
+	1436953057 	# Ghostery Lite
+  409183694   # Keynote
+  409203825   # Numbers
+  409201541   # Paages
+	1289583905 	# Pixelmator Pro
+	1003160018 	# Quip
+	930093508  	# Shapes
+	457622435  	# Yoink
 )
 
 git_configs=(
