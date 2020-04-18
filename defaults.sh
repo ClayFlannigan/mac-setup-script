@@ -62,6 +62,9 @@ defaults write com.apple.menuextra.clock "DateFormat" 'MMM d hh:mm'
 # Battery
 defaults write com.apple.menuextra.battery ShowPercent -bool true
 
+# Paste
+defaults write .GlobalPreferences NSUserKeyEquivalents -dict-add "Paste and Match Style" -string "@v"
+
 # Set highlight color to green
 #defaults write NSGlobalDomain AppleHighlightColor -string "0.764700 0.976500 0.568600"
 
