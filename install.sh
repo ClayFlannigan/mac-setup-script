@@ -16,7 +16,6 @@ brews=(
 casks=(
 	amazon-chime
 	amazon-workdocs
-  caffeine
   drawio
 	elmedia-player
 	google-chrome
@@ -35,6 +34,7 @@ pips=(
 
 apps=(
 	1333542190	# 1Password
+  937984704   # amphetamine
 	417375580  	# BetterSnapTool
 	1209754386 	# eDrawings
 	1436953057 	# Ghostery Lite
