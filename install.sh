@@ -22,6 +22,7 @@ casks=(
 	osxfuse
 	pycharm-ce
 	sublime-text
+  turbo-boost-switcher
 )
 
 pips=(
