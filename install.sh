@@ -23,6 +23,7 @@ casks=(
 	pycharm-ce
 	sublime-text
   turbo-boost-switcher
+  xmind
 )
 
 pips=(
