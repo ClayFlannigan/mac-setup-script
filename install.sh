@@ -17,7 +17,6 @@ casks=(
 	amazon-chime
 	amazon-workdocs
   drawio
-	elmedia-player
 	google-chrome
 	osxfuse
 	pycharm-ce
@@ -39,6 +38,7 @@ apps=(
   937984704   # amphetamine
 	417375580  	# BetterSnapTool
 	1209754386 	# eDrawings
+  # 1044549675  # Elmedia Video Player
 	1436953057 	# Ghostery Lite
   409183694   # Keynote
   409203825   # Numbers
@@ -49,17 +49,10 @@ apps=(
 	457622435  	# Yoink
 )
 
-git_configs=(
-  "user.name clayflannigan"
-  "user.email clay.flannigan@gmail.com"
-  "core.excludesfile ~/.gitignore"
-#  "user.signingkey ${gpg_key}"
-)
-
 ######################################## End of app list ########################################
 
 set +e
-set -x
+set +x
 
 function prompt {
   if [[ -z "${CI}" ]]; then
@@ -106,15 +99,15 @@ if [[ -z "${CI}" ]]; then
   while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 fi
 
-echo "*** Install xcode comannd line tools ***"
+echo -e "\n*** Install xcode comannd line tools ***"
 xcode-select --install
 
 if test ! "$(command -v brew)"; then
-  echo "*** Install Homebrew ***"
+  echo -e "\n*** Install Homebrew ***"
   ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 else
   if [[ -z "${CI}" ]]; then
-    echo "*** Update Homebrew ***"
+    echo -e "\n*** Update Homebrew ***"
     brew update
     brew upgrade
     brew doctor
@@ -122,33 +115,28 @@ else
 fi
 export HOMEBREW_NO_AUTO_UPDATE=1
 
-echo "*** Install cask software ***"
+echo -e "\n*** Install cask software ***"
 brew tap homebrew/cask-versions
 install 'brew cask install' "${casks[@]}"
 
-echo "*** Install homebrew packages ***"
+echo -e "\n*** Install homebrew packages ***"
 install 'brew_install_or_upgrade' "${brews[@]}"
 
-echo "*** Install secondary packages ***"
+echo -e "\n*** Install secondary packages ***"
 install 'pip3 install --upgrade' "${pips[@]}"
 
-echo "*** Update packages ***"
+echo -e "\n*** Update packages ***"
 pip3 install --upgrade pip setuptools wheel
 if [[ -z "${CI}" ]]; then
   m update install all
 fi
 
 if [[ -z "${CI}" ]]; then
-  echo "*** Install software from Mac App Store ***"
+  echo -e "\n*** Install software from Mac App Store ***"
   install 'mas install' "${apps[@]}"
 fi
 
-for config in "${git_configs[@]}"
-do
-  git config --global ${config}
-done
-
-echo "*** Cleanup ***"
+echo -e "\n*** Cleanup ***"
 brew cleanup
 
-echo "Done!"
+echo -e "Done!"
