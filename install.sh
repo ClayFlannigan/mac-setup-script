@@ -10,6 +10,7 @@ brews=(
   mwinit
   python
   python3
+  swift-format
   wget
   youtube-dl
 )
