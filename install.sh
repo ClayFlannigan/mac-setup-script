@@ -7,6 +7,7 @@ brews=(
   goofys
   imagemagick
   mas
+  mwinit
   python
   python3
   wget
@@ -46,6 +47,7 @@ apps=(
 	1289583905 	# Pixelmator Pro
 	1003160018 	# Quip
 	930093508  	# Shapes
+  803453959   # Slack
 	457622435  	# Yoink
 )
 
@@ -120,6 +122,7 @@ brew tap homebrew/cask-versions
 install 'brew cask install' "${casks[@]}"
 
 echo -e "\n*** Install homebrew packages ***"
+brew tap amazon/amazon ssh://git.amazon.com/pkg/HomebrewAmazon
 install 'brew_install_or_upgrade' "${brews[@]}"
 
 echo -e "\n*** Install secondary packages ***"
