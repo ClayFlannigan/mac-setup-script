@@ -18,6 +18,7 @@ brews=(
 casks=(
 	amazon-chime
 	amazon-workdocs
+  amazon-workspaces
   drawio
 	google-chrome
 	osxfuse
