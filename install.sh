@@ -24,7 +24,8 @@ casks=(
 	osxfuse
 	pycharm-ce
 	sublime-text
-  turbo-boost-switcher
+  # turbo-boost-switcher
+  vlc
   xmind
 )
 
